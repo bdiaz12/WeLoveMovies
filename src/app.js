@@ -14,10 +14,12 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-app.use('/', (err, req, res, next) => {
-    res.json({ message:
-  'Welcome! You can access the data using these routes: /movies, /reviews, /theaters, /reviews/:reviewId, /movies/:movieId, /movies/:movieId/theaters, and /movies/:movieId/reviews.'});
-});
+// Define the endpoint for the index route
+app.get('/', (req, res) => {
+    res.json({
+      message: 'Welcome! You can access the data using these routes: /movies, /reviews, /theaters, /reviews/:reviewId, /movies/:movieId, /movies/:movieId/theaters, and /movies/:movieId/reviews.'
+    });
+  });
 
 app.use("/movies", moviesRouter);
 app.use("/reviews", reviewsRouter);
